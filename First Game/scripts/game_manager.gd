@@ -17,3 +17,8 @@ func join_as_player_2():
 	print("Join as player 2");
 	%MultiplayerHud.hide()
 	MultiplayerManager.join_as_player_2()
+
+func single_player_mode():
+	print("Single player mode");
+	%MultiplayerHud.hide()
+	MultiplayerManager.single_player_mode()

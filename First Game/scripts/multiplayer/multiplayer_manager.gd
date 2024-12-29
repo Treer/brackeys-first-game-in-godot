@@ -32,7 +32,21 @@ func become_host():
 	
 	_remove_single_player()
 	_add_player_to_gamne(1)
-		
+
+func single_player_mode():
+	print("Joined as offline MultiplayerPeer")
+	_players_to_spawn_node = get_tree().current_scene.get_node("PlayersToSpawn")
+	
+	host_mode_enabled = true
+	multiplayer_mode_enabled = true
+	
+	# OfflineMultiplayerPeer is already the default value
+	# var offline_peer = OfflineMultiplayerPeer.new()
+	# multiplayer.multiplayer_peer = offline_peer
+	
+	_remove_single_player()
+	_add_player_to_gamne(multiplayer.multiplayer_peer.get_unique_id()) # get_unique_id() just returns 1
+
 func join_as_player_2():
 	print("Joined as player 2")
 	
@@ -44,6 +58,8 @@ func join_as_player_2():
 	multiplayer.multiplayer_peer = client_peer
 	
 	_remove_single_player()
+
+
 
 func _add_player_to_gamne(id: int):
 	print("Player %s joined the game!" % id)

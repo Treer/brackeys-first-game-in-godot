@@ -364,6 +364,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -384,6 +385,12 @@ theme_override_fonts/font = ExtResource("7_8cblx")
 theme_override_font_sizes/font_size = 8
 text = "Join as player 2"
 
+[node name="SinglePlayer" type="Button" parent="MultiplayerHud/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7_8cblx")
+theme_override_font_sizes/font_size = 8
+text = "Single player"
+
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("uid://dfhvkvwk73qp1")
 spawn_path = NodePath("../PlayersToSpawn")
@@ -401,4 +408,5 @@ shape = SubResource("RectangleShape2D_kvpfn")
 
 [connection signal="pressed" from="MultiplayerHud/Panel/VBoxContainer/HostGame" to="GameManager" method="become_host"]
 [connection signal="pressed" from="MultiplayerHud/Panel/VBoxContainer/JoinAsPlayer2" to="GameManager" method="join_as_player_2"]
+[connection signal="pressed" from="MultiplayerHud/Panel/VBoxContainer/SinglePlayer" to="GameManager" method="single_player_mode"]
 [connection signal="body_entered" from="FinishLine" to="FinishLine" method="_on_body_entered"]
