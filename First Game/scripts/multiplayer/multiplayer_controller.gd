@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+# todo
+# currently up to 11:35 in https://www.youtube.com/watch?v=GqHTNmRspjU&t=690s
+# need to add the rollback synchronizer
+
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
@@ -7,11 +11,13 @@ const JUMP_VELOCITY = -300.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-# these properties are being synchronized with the InputSynchronizer
+## these properties are being synchronized with the InputSynchronizer
 var direction = 1
 var do_jump = false
 var _is_on_floor = true
-var alive = true # hack to allow ignoring erroneous collisions when respawning
+var alive = true ## hack to allow ignoring erroneous collisions when respawning
+
+@export var input: PlayerInput
 
 # id 1 means the server
 # this property is being synchronized with the PlayerSynchronizer
@@ -20,7 +26,7 @@ var alive = true # hack to allow ignoring erroneous collisions when respawning
 		player_id = id
 		# gives client authority to any scripts attached to the InputSynchronizer
 		# (InputSynchronizer's script exposes player input, leaving this script server-authority, so cheats can't set velocity etc)
-		%InputSynchronizer.set_multiplayer_authority(id)
+		input.set_multiplayer_authority(id)
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -58,7 +64,7 @@ func _apply_movement_from_input(delta):
 		do_jump = false
 
 	# Get the input direction: -1, 0, 1
-	direction = %InputSynchronizer.input_direction
+	direction = input.input_direction
 	
 	# Apply movement
 	if direction:
