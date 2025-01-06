@@ -14,7 +14,6 @@ func _on_body_entered(body):
 func _multiplayer_dead(body):
 	# code is run by all clients, even though only server is authoratative, so check if server
 	if multiplayer.is_server() && body.alive:
-		Engine.time_scale = 0.5
 		body.mark_dead()
 		
 

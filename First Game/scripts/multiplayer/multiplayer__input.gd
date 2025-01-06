@@ -1,7 +1,5 @@
 class_name PlayerInput extends Node
 
-@onready var player = $".."
-
 # Each player scene requires two synchronizers:
 # * The PlayerSynchronizer syncs state from the server (is server-authoratative)
 # * the InputSyncronizer syncs input from the client (is client-authoratative)
@@ -32,7 +30,8 @@ func _ready() -> void:
 	# give it an initial value
 	input_direction = Input.get_axis("move_left", "move_right")
 	
-## the sync'd network-time-tic rquivalent of _physics_process
+## the sync'd network-time-tic equivalent of _physics_process
+## where we can gather the input state
 func _gather():
 	if not is_multiplayer_authority():
 		return

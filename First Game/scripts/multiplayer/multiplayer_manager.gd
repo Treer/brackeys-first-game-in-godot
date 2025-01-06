@@ -27,13 +27,17 @@ func become_host():
 	multiplayer.multiplayer_peer = server_peer
 	
 	# connect a signal to our function to manage the connection of players
-	multiplayer.peer_connected.connect(_add_player_to_gamne)
+	multiplayer.peer_connected.connect(_add_player_to_game)
 	multiplayer.peer_disconnected.connect(_del_player)
 	
 	_remove_single_player()
-	_add_player_to_gamne(1)
+	_add_player_to_game(1)
 
 func single_player_mode():
+	# doesn't work with netfox, possibly because we don't have a host and netfox
+	# warns in its limitations section that:
+	# > ownership is hard-coded in some cases. One such case is NetworkTime, which is always owned by the host peer and always takes the host peer's time as reference.
+	
 	print("Joined as offline MultiplayerPeer")
 	_players_to_spawn_node = get_tree().current_scene.get_node("PlayersToSpawn")
 	
@@ -45,7 +49,7 @@ func single_player_mode():
 	# multiplayer.multiplayer_peer = offline_peer
 	
 	_remove_single_player()
-	_add_player_to_gamne(multiplayer.multiplayer_peer.get_unique_id()) # get_unique_id() just returns 1
+	_add_player_to_game(multiplayer.multiplayer_peer.get_unique_id()) # get_unique_id() just returns 1
 
 func join_as_player_2():
 	print("Joined as player 2")
@@ -61,7 +65,7 @@ func join_as_player_2():
 
 
 
-func _add_player_to_gamne(id: int):
+func _add_player_to_game(id: int):
 	print("Player %s joined the game!" % id)
 	
 	var player_to_add = multiplayer_scene.instantiate()

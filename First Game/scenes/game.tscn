@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cuv4vme4rwno0"]
 
-[ext_resource type="Script" uid="uid://cnblrbemwh1qb" path="res://scripts/game_manager.gd" id="1_l4ihi"]
+[ext_resource type="Script" uid="uid://bk8k0ww0dls0c" path="res://scripts/game_manager.gd" id="1_l4ihi"]
 [ext_resource type="PackedScene" uid="uid://dqnaqj8yb6hwd" path="res://scenes/player.tscn" id="1_rbmkf"]
 [ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_nlliu"]
 [ext_resource type="Texture2D" uid="uid://d0q2g65ahgok" path="res://assets/sprites/world_tileset.png" id="2_r1crl"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dtrbka1ef726o" path="res://scenes/killzone.tscn" id="5_x8euu"]
 [ext_resource type="PackedScene" uid="uid://d2w2i5h0lhc6l" path="res://scenes/slime.tscn" id="6_l0s6b"]
 [ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="7_8cblx"]
-[ext_resource type="Script" uid="uid://y4ed5621kkhw" path="res://scripts/finish_line.gd" id="10_vtaks"]
+[ext_resource type="Script" uid="uid://m6yw48ndky6l" path="res://scripts/finish_line.gd" id="10_vtaks"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ashvg"]
 texture = ExtResource("2_r1crl")
